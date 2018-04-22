@@ -1,0 +1,21 @@
+USE [Synonyms]
+GO
+
+/****** Object:  Table [dbo].[Synonyms]    Script Date: 22.04.2018 22:47:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Synonyms](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Term] [nvarchar](max) NOT NULL,
+	[Synonyms] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Synonyms] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO

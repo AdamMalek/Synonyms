@@ -28,16 +28,14 @@ namespace Synonyms.Services
                 throw new ArgumentException("Invalid term");
             }
 
-            if (!string.IsNullOrWhiteSpace(synonyms?.Replace(",", "")))
-            {
-                synonyms = string.Join(",",
-                                       synonyms.Split(",", System.StringSplitOptions.RemoveEmptyEntries)
-                                                .Select(x => x.Trim().ToLower())
-                                                .Where(x => x != term)
-                                                .Distinct()
-                                       );
-            }
-            else
+            synonyms = synonyms?.Replace(term, "") ?? "";
+            synonyms = string.Join(",",
+                                   synonyms.Split(",", System.StringSplitOptions.RemoveEmptyEntries)
+                                            .Select(x => x.Trim().ToLower())
+                                            .Distinct()
+                                   );
+
+            if (string.IsNullOrWhiteSpace(synonyms))
             {
                 throw new ArgumentException("Invalid synonyms");
             }

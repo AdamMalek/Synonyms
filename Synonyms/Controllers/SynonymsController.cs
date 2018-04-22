@@ -11,7 +11,7 @@ using Synonyms.Services;
 namespace Synonyms.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Synonyms")]
+    [Route("api/synonyms")]
     public class SynonymsController : Controller
     {
         private readonly ISynonymService _synonymService;
@@ -22,11 +22,10 @@ namespace Synonyms.Controllers
         }
 
         [HttpGet]
-        public SynonymVM[] Get()
+        public IEnumerable<SynonymVM> Get()
         {
             return _synonymService.GetAll()
-                                  .Select(x => new SynonymVM { Term = x.Key, Synonyms = x.Value })
-                                  .ToArray();
+                                  .Select(x => new SynonymVM { Term = x.Key, Synonyms = x.Value });
         }
 
         [HttpPost]
@@ -41,6 +40,15 @@ namespace Synonyms.Controllers
                     {
                         Message = "Success",
                         Success = true
+                    };
+                }
+                catch (ArgumentException e)
+                {
+                    Response.StatusCode = 400;
+                    return new ApiResponse
+                    {
+                        Message = e.Message,
+                        Success = false
                     };
                 }
                 catch (Exception e)

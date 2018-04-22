@@ -1,0 +1,5 @@
+<div class="container">
+  <div *ngFor="let synonymItem of synonymList | async">
+    <app-synonym-item [item]="synonymItem"></app-synonym-item>
+  </div>
+</div>

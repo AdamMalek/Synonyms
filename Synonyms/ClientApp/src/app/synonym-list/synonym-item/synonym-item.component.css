@@ -1,0 +1,20 @@
+.term{
+    color: red;
+    text-decoration: underline;
+    margin-bottom: 4px;
+}
+
+.synonym-list{
+    padding: 0 0 0 4px;
+    margin: 0;
+}
+
+.synonym-list li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 3px;
+    color: white;
+    padding: 4px;
+    background: gray;
+    border-radius: 3px;
+}
