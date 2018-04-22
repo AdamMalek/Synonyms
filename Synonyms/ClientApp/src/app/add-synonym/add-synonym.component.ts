@@ -14,7 +14,7 @@ export class AddSynonymComponent {
   synonyms: string = "";
 
   addSynonym(){
-    // if (this.term === "" || this.term === null || this.synonyms === "" || this.synonyms === null) return;
+    if (this.term === "" || this.term === null || this.synonyms === "" || this.synonyms === null) return;
 
     this.synonymService.addSynonym(this.term,this.synonyms);
     this.term = "";

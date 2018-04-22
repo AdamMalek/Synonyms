@@ -10,10 +10,6 @@ export class SynonymService {
     @Output() onDataUpdated: EventEmitter<void> = new EventEmitter<void>();
 
     public addSynonym(term: string, synonyms: string) {
-
-        var headers = new HttpHeaders();
-        headers.append("Content-Type","application/json");
-
         this.http.post("/api/synonyms",
                         { term: term, synonyms: synonyms }                        
                     )
